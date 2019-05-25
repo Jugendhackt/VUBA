@@ -21,9 +21,13 @@ def getBikes():
     if not (lat is None or lon is None or limit is None):
         bike_list = "["
         for service in provider:
-            bikes = service.get_bikes(lat, lon, limit)
-            for bike in bikes:
-                bike_list += bike.__repr__() + ","
+            try:
+                bikes = service.get_bikes(lat, lon, limit)
+            except Exception:
+                bikes = []
+            finally:
+                for bike in bikes:
+                    bike_list += bike.__repr__() + ","
         bike_list = bike_list[:-1]
         bike_list += "]"
         return bike_list
@@ -31,7 +35,6 @@ def getBikes():
 
 
 # Static file serving
-
 @app.route('/', methods=['GET'])
 def index():
     return send_from_directory('../client', 'index.html')
