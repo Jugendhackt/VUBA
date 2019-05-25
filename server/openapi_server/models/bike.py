@@ -15,11 +15,11 @@ class Bike(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, accuarcy=None, bike_id=None, provider=None, additional_info=None, is_stationary=None, station_id=None, coordinates=None):  # noqa: E501
+    def __init__(self, accuracy=None, bike_id=None, provider=None, additional_info=None, is_stationary=None, station_id=None, coordinates=None):  # noqa: E501
         """Bike - a model defined in OpenAPI
 
-        :param accuarcy: The accuarcy of this Bike.  # noqa: E501
-        :type accuarcy: float
+        :param accuracy: The accuracy of this Bike.  # noqa: E501
+        :type accuracy: float
         :param bike_id: The bike_id of this Bike.  # noqa: E501
         :type bike_id: str
         :param provider: The provider of this Bike.  # noqa: E501
@@ -34,7 +34,7 @@ class Bike(Model):
         :type coordinates: Coordinates
         """
         self.openapi_types = {
-            'accuarcy': float,
+            'accuracy': float,
             'bike_id': str,
             'provider': str,
             'additional_info': str,
@@ -44,7 +44,7 @@ class Bike(Model):
         }
 
         self.attribute_map = {
-            'accuarcy': 'Accuarcy',
+            'accuracy': 'Accuracy',
             'bike_id': 'BikeID',
             'provider': 'Provider',
             'additional_info': 'AdditionalInfo',
@@ -53,7 +53,7 @@ class Bike(Model):
             'coordinates': 'Coordinates'
         }
 
-        self._accuarcy = accuarcy
+        self._accuracy = accuracy
         self._bike_id = bike_id
         self._provider = provider
         self._additional_info = additional_info
@@ -73,25 +73,27 @@ class Bike(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def accuarcy(self):
-        """Gets the accuarcy of this Bike.
+    def accuracy(self):
+        """Gets the accuracy of this Bike.
 
 
-        :return: The accuarcy of this Bike.
+        :return: The accuracy of this Bike.
         :rtype: float
         """
-        return self._accuarcy
+        return self._accuracy
 
-    @accuarcy.setter
-    def accuarcy(self, accuarcy):
-        """Sets the accuarcy of this Bike.
+    @accuracy.setter
+    def accuracy(self, accuracy):
+        """Sets the accuracy of this Bike.
 
 
-        :param accuarcy: The accuarcy of this Bike.
-        :type accuarcy: float
+        :param accuracy: The accuracy of this Bike.
+        :type accuracy: float
         """
+        if accuracy is None:
+            raise ValueError("Invalid value for `accuracy`, must not be `None`")  # noqa: E501
 
-        self._accuarcy = accuarcy
+        self._accuracy = accuracy
 
     @property
     def bike_id(self):

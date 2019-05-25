@@ -68,7 +68,7 @@ components:
         - Coordinates
         - AdditionalInfo
       properties:
-        Accuarcy:
+        Accuracy:
           type: number
           format: float
           example: 10.0

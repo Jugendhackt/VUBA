@@ -56,20 +56,20 @@ components:
       example:
         Bikes:
         - AdditionalInfo: This bike **might be damaged**
+          Accuracy: 10.0
           BikeID: d290f1ee-6c54-4b01-90e6-d701748f0851
           Coordinates:
             Lon: 8.85
             Lat: 51.9
-          Accuarcy: 10.0
           IsStationary: true
           StationId: d290f1ee-6c54-4b01-90e6-d701748f0851
           Provider: nextbike
         - AdditionalInfo: This bike **might be damaged**
+          Accuracy: 10.0
           BikeID: d290f1ee-6c54-4b01-90e6-d701748f0851
           Coordinates:
             Lon: 8.85
             Lat: 51.9
-          Accuarcy: 10.0
           IsStationary: true
           StationId: d290f1ee-6c54-4b01-90e6-d701748f0851
           Provider: nextbike
@@ -88,16 +88,16 @@ components:
     Bike:
       example:
         AdditionalInfo: This bike **might be damaged**
+        Accuracy: 10.0
         BikeID: d290f1ee-6c54-4b01-90e6-d701748f0851
         Coordinates:
           Lon: 8.85
           Lat: 51.9
-        Accuarcy: 10.0
         IsStationary: true
         StationId: d290f1ee-6c54-4b01-90e6-d701748f0851
         Provider: nextbike
       properties:
-        Accuarcy:
+        Accuracy:
           example: 10.0
           format: float
           type: number
