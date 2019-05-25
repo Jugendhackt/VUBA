@@ -23,7 +23,17 @@ let setMarker = function(position){
                            new OpenLayers.Projection("EPSG:4326"),
                            map.getProjectionObject()
                        );
-                   let marker = new OpenLayers.Marker(bikelonLat);
+                   let icon = new OpenLayers.Icon('/res/icon/' +bikes[i].provider, new OpenLayers.Size(20, 20), new OpenLayers.Pixel(-6, -10));
+                   let marker = new OpenLayers.Marker(bikelonLat, icon.clone());
+
+                   marker.events.register('click', marker, function() {
+                        popup = new OpenLayers.Popup.FramedCloud(bikes[i].bikeID,
+                            marker.lonlat,
+                            new OpenLayers.Size(200, 200),
+                            "Fahrrad von<br/>"+bikes[i].provider,
+                            null, true);
+                        map.addPopup(popup);
+                    });
                    markers.addMarker(marker);
                }
            }

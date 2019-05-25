@@ -1,8 +1,11 @@
-from flask import Flask, request, send_from_directory
+import hashlib
+from flask import Flask, request, send_from_directory, send_file
 import json
+from PIL import Image
 
 from interface.provider.call_a_bike import CallABike
 from interface.provider.nextbike import Nextbike
+from server.image_util import serve_pil_image, replace_color, get_rgb_from_int
 from interface.provider.jumpbike_USA import JumpbikeUSA
 from interface.provider.mobike import Mobike
 
@@ -37,6 +40,15 @@ def index():
 @app.route('/lib/<string:file>', methods=['GET'])
 def lib(file):
     return send_from_directory('../client/src', file)
+
+
+@app.route('/res/icon/<string:provider>', methods=['GET'])
+def res(provider):
+    hash = hashlib.md5((provider+"a").encode("utf-8")).hexdigest()[:6]
+    color = int(f"0x{hash}", 16)
+    img_template = Image.open("res/marker_template.png")
+    img = replace_color(img_template, (35, 32, 31), get_rgb_from_int(color))
+    return serve_pil_image(img)
 
 
 app.run(port=8080)
