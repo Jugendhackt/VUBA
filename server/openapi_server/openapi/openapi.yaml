@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: TobiasBrohl@Protonmai.com
+  description: This is a simple API
+  license:
+    name: MIT
+  title: VUBA API
+  version: 1.0.0
+servers:
+- description: SwaggerHub API Auto Mocking
+  url: https://virtserver.swaggerhub.com/The_Minefighter/VUBA/1.0.0
+tags:
+- description: Operations available to regular developers
+  name: developers
+paths:
+  /getBikes:
+    get:
+      operationId: get_bikes_internal
+      parameters:
+      - description: coordinates to search at
+        explode: true
+        in: query
+        name: coordinates
+        required: false
+        schema:
+          $ref: '#/components/schemas/Coordinates'
+        style: form
+      - description: maximum number of records to return
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 50
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BikeRet'
+          description: search results matching criteria
+        400:
+          description: bad input parameter
+      summary: Searches for Bikes at a given Loaction
+      tags:
+      - developers
+      x-openapi-router-controller: openapi_server.controllers.developers_controller
+components:
+  schemas:
+    BikeRet:
+      example:
+        Bikes:
+        - AdditionalInfo: This bike **might be damaged**
+          BikeID: d290f1ee-6c54-4b01-90e6-d701748f0851
+          Coordinates:
+            Lon: 8.85
+            Lat: 51.9
+          Accuarcy: 10.0
+          IsStationary: true
+          StationId: d290f1ee-6c54-4b01-90e6-d701748f0851
+          Provider: nextbike
+        - AdditionalInfo: This bike **might be damaged**
+          BikeID: d290f1ee-6c54-4b01-90e6-d701748f0851
+          Coordinates:
+            Lon: 8.85
+            Lat: 51.9
+          Accuarcy: 10.0
+          IsStationary: true
+          StationId: d290f1ee-6c54-4b01-90e6-d701748f0851
+          Provider: nextbike
+      properties:
+        Bikes:
+          items:
+            $ref: '#/components/schemas/Bike'
+          type: array
+      required:
+      - Bikes
+      type: object
+    Bikes:
+      items:
+        $ref: '#/components/schemas/Bike'
+      type: array
+    Bike:
+      example:
+        AdditionalInfo: This bike **might be damaged**
+        BikeID: d290f1ee-6c54-4b01-90e6-d701748f0851
+        Coordinates:
+          Lon: 8.85
+          Lat: 51.9
+        Accuarcy: 10.0
+        IsStationary: true
+        StationId: d290f1ee-6c54-4b01-90e6-d701748f0851
+        Provider: nextbike
+      properties:
+        Accuarcy:
+          example: 10.0
+          format: float
+          type: number
+        BikeID:
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+          type: string
+        Provider:
+          example: nextbike
+          type: string
+        AdditionalInfo:
+          description: Additional information; markdown
+          example: This bike **might be damaged**
+          type: string
+        IsStationary:
+          type: boolean
+        StationId:
+          description: null if IsStationary is false, or nor provided by provider
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+          type: string
+        Coordinates:
+          $ref: '#/components/schemas/Coordinates'
+      required:
+      - Accuracy
+      - AdditionalInfo
+      - BikeID
+      - Coordinates
+      - Provider
+      type: object
+    Coordinates:
+      example:
+        Lon: 8.85
+        Lat: 51.9
+      properties:
+        Lat:
+          example: 51.9
+          format: float
+          type: number
+        Lon:
+          example: 8.85
+          format: float
+          type: number
+      required:
+      - Lat
+      - Lon
+      type: object

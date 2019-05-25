@@ -1,0 +1,107 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/The_Minefighter/VUBA/1.0.0
+info:
+  description: This is a simple API
+  version: "1.0.0"
+  title: VUBA API
+  contact:
+    email: TobiasBrohl@Protonmai.com
+  license:
+    name: MIT
+tags:
+  - name: developers
+    description: Operations available to regular developers
+paths:
+  /getBikes:
+    get:
+      tags:
+        - developers
+      summary: Searches for Bikes at a given Loaction
+      operationId: getBikesInternal
+      parameters:
+        - in: query
+          name: coordinates
+          description: coordinates to search at
+          required: false
+          schema:
+            $ref: '#/components/schemas/Coordinates'
+        - in: query
+          name: limit
+          description: maximum number of records to return
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 50
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BikeRet'
+        '400':
+          description: bad input parameter
+components:
+  schemas:
+    BikeRet:
+      type: object
+      required:
+        - Bikes
+      properties:
+        Bikes:
+          $ref: '#/components/schemas/Bikes'
+    Bikes:
+      type: array
+      items:
+        $ref: '#/components/schemas/Bike'
+
+    Bike:
+      type: object
+      required:
+        - BikeID
+        - Accuracy
+        - Provider
+        - Coordinates
+        - AdditionalInfo
+      properties:
+        Accuarcy:
+          type: number
+          format: float
+          example: 10.0
+        BikeID:
+          type: string
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        Provider:
+          type: string
+          example: nextbike
+        AdditionalInfo:
+          type: string
+          description: Additional information; markdown
+          example: This bike **might be damaged**
+        IsStationary:
+          type: boolean
+          example: true
+        StationId:
+          type: string
+          description: null if IsStationary is false, or nor provided by provider
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        Coordinates:
+          $ref: '#/components/schemas/Coordinates'
+    Coordinates:
+      required:
+        - Lat
+        - Lon
+      properties:
+        Lat:
+          type: number
+          format: float
+          example: 51.9
+        Lon:
+          type: number
+          format: float
+          example: 8.85
+      type: object
