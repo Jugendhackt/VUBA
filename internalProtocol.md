@@ -13,3 +13,5 @@
     - Accuracy: float (use 0.0 if unknown)
     - AdditionalInfo: string (Supports Markdown)
     - BikeID: string
+    - IsStationary: bool
+    - StationID: string
