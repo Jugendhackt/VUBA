@@ -30,7 +30,7 @@ class Bike:
 
 
 class ProviderInterface:
-    def get_bikes(self, lat: float, lon: float) -> [Bike]:
+    def get_bikes(self, lat: float, lon: float, limit: int) -> [Bike]:
         return []
 
 
