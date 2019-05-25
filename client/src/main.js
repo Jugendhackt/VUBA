@@ -30,7 +30,9 @@ let setMarker = function(position){
                         popup = new OpenLayers.Popup.FramedCloud(bikes[i].bikeID,
                             marker.lonlat,
                             new OpenLayers.Size(200, 200),
-                            "Fahrrad von<br/>"+bikes[i].provider,
+                            bikes[i].additionalInfo + "<br>" +
+                            (bikes[i].isStationary + "").replace('true', 'Das Fahrrad ist in einer Station.').replace('false', 'Das Fahrrad steht frei.') + "<br>" +
+                            "Angeboten von "+bikes[i].provider,
                             null, true);
                         map.addPopup(popup);
                     });

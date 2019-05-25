@@ -11,12 +11,12 @@ class JumpbikeUSA(ProviderInterface):
         bikes = []
         for bike in data["data"]["bikes"]:
             bike_id = bike["bike_id"]
-            info = bike["jump_ebike_battery_level"]
+            info = bike["jump_ebike_battery_level"] + ' Battery'
             lon = bike["lon"]
             lat = bike["lat"]
-            provider = "Jump"
+            provider = "jump"
             stationary = False
-            station_id = "non"
+            station_id = None
 
             bikes.append(Bike(lon, lat, provider, 0, info, bike_id, stationary, station_id))
         bikes = self.limit(bikes, lat, lon, limit)
