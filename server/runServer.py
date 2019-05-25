@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 import json
 
 from interface.provider.call_a_bike import CallABike
@@ -23,6 +23,18 @@ def getBikes():
         bike_list += "]"
         return bike_list
     return json.dumps({"message": "Not everything provided!"})
+
+
+# Static file serving
+
+@app.route('/', methods=['GET'])
+def index():
+    return send_from_directory('../client', 'index.html')
+
+
+@app.route('/lib/<string:file>', methods=['GET'])
+def lib(file):
+    return send_from_directory('../client/src', file)
 
 
 app.run(port=8080)
