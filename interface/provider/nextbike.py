@@ -12,7 +12,7 @@ class Nextbike(ProviderInterface):
     def get_city_uid(self, lat : float, lon : float):
         best_dist = -1
         best_uid = -1
-        for country in self.data["coun5tries"]:
+        for country in self.data["countries"]:
             for city in country["cities"]:
                 dist = abs(haversine(lat, lon, float(city["lat"]), float(city["lng"])))
                 if dist < best_dist or best_dist<0:
