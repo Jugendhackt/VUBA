@@ -1,14 +1,24 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>VUBA</title>
+    <style>
+        #marker {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #088;
+            border-radius: 10px;
+            background-color: #0FF;
+            opacity: 0.5;
+        }
+    </style>
 </head>
 <body>
-<div id="map"></div>
+<div id="mapdiv"></div>
+<div style="display: none;" id="overlays">
+</div>
 
 <!-- scripts -->
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-<script src="lib/vuba.js"></script>
+<script src="lib/main.js"></script>
 </body>
 </html>

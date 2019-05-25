@@ -1,3 +1,0 @@
-document.body.onload = (evt) => {
-
-};
