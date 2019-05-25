@@ -21,7 +21,7 @@ class Nextbike(ProviderInterface):
 
         return best_uid
 
-    def get_bikes(self, lat: float, lon: float) -> [Bike]:
+    def get_bikes(self, lat: float, lon: float, limit: int) -> [Bike]:
         uid = self.get_city_uid(lat, lon)
         r = requests.get(f"https://api.nextbike.net/maps/nextbike-live.json?city={uid}")
         city_data = r.json()

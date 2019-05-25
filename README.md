@@ -2,13 +2,18 @@
 ##### Vereinigte Übersicht aller Bikesharing Anbieter
 #### Find the nearest bike.
 ## What is VUBA?
-VUBA is a webapp to find the nearest bike from all bike sharing apps.
+VUBA is a webapp to find the nearest bike from many bike sharing apps.
 ## Why?
 Sometimes you need to find the nearest bike.
 Without VUBA you had to look through every bike sharing app to find the nearest.
 With VUBA you just open VUBA, find the nearest bike and afterwards open the corresponding bike app.
-## Token creation
-Some services need a token to access their API.
-In VUBA you can find a link to the token creation process and a field to enter your token.
-This token will saved on your machine and not on a server.<br>
-  -> This means you have to enter your token on every machine
+## How?
+Fist of all there are the Providers.
+Most of them provide an API.
+These APIs will be contacted by our server when needed.
+The server will (in the future) Provide caching for these information.
+Then there is an OAS3 specified interface for the clients.
+
+## Supported bike providers
+ - nextbike
+ - Call-a-bike
