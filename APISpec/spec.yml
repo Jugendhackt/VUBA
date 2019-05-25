@@ -88,7 +88,7 @@ components:
           example: true
         StationId:
           type: string
-          description: null if IsStationary is false, or nor provided by provider
+          description: null if IsStationary is false, or not provided by provider
           example: d290f1ee-6c54-4b01-90e6-d701748f0851
         Coordinates:
           $ref: '#/components/schemas/Coordinates'

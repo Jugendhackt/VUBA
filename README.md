@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/TheMinefighter/VUBA/_apis/build/status/VUBA-CI?branchName=master)](https://dev.azure.com/TheMinefighter/VUBA/_build/latest?definitionId=5&branchName=master)
 # VUBA
 ##### Vereinigte Übersicht aller Bikesharing Anbieter
 #### Find the nearest bike.
