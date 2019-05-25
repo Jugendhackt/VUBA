@@ -1,3 +1,5 @@
+import json
+
 class Coordinates:
     lon: float
     lat: float
@@ -16,6 +18,20 @@ class Bike:
     bike_id: str
     is_stationary: bool
     station_id: str
+
+    def __repr__(self) -> str:
+        return json.dumps({
+            "coordinates": {
+                "lon": self.coordinates.lon,
+                "lat": self.coordinates.lat
+            },
+            "provider": self.provider,
+            "accuracy": self.accuracy,
+            "additionalInfo": self.additional_info,
+            "bikeId": self.bike_id,
+            "isStationary":  self.is_stationary,
+            "stationId": self.station_id
+        })
 
     def __init__(self, lon: float, lat: float, provider: str, accuracy: float, additional_info: str,
                  bike_id: str, is_stationary: bool, station_id: str) -> None:
