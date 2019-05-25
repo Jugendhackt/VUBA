@@ -32,4 +32,3 @@ class Mobike(ProviderInterface):
 
             bikes.append(Bike(lon, lat, provider, 0, info, bike_id, stationary, station_id))
         return bikes
-        print(response.text)

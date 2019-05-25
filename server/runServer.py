@@ -3,9 +3,11 @@ import json
 
 from interface.provider.call_a_bike import CallABike
 from interface.provider.nextbike import Nextbike
+from interface.provider.jumpbike_USA import JumpbikeUSA
+from interface.provider.mobike import Mobike
 
 app = Flask(__name__)
-provider = [CallABike(), Nextbike()]
+provider = [CallABike(), Nextbike(), JumpbikeUSA(), Mobike()]
 
 
 @app.route('/getBikes', methods=['GET'])
