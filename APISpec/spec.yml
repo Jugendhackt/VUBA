@@ -1,39 +1,41 @@
 openapi: 3.0.0
 # Added by API Auto Mocking Plugin
 servers:
-  - url: http://127.0.0.1/v1/
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/The_Minefighter/VUBA/1.0.7
 info:
   description: This is a simple API
-  version: "1.0.0"
+  version: "1.0.7"
   title: VUBA API
   contact:
     email: TobiasBrohl@Protonmai.com
   license:
     name: MIT
-tags:
-  - name: developers
-    description: Operations available to regular developers
 paths:
   /getBikes:
     get:
-      tags:
-        - developers
+      tags: []
       summary: Searches for Bikes at a given Loaction
+      description: This method searches at all implemented providers for bikes near the given location
+        it might return cached results in the future. The results are NOT ordered by distance
       operationId: getBikesInternal
       parameters:
         - in: query
           name: coordinates
           description: coordinates to search at
+          example: {"Lat": 52.518611,"Lon": 13.408333}
           required: false
           schema:
             $ref: '#/components/schemas/Coordinates'
         - in: query
           name: limit
           description: maximum number of records to return
+          example: 30
           schema:
             type: integer
             format: int32
             minimum: 0
+            default: 50
             maximum: 50
       responses:
         '200':
@@ -99,8 +101,8 @@ components:
         Lat:
           type: number
           format: float
-          example: 51.9
+          example: 52.518611
         Lon:
           type: number
           format: float
-          example: 8.85
+          example: 13.408333
