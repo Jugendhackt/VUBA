@@ -3,6 +3,7 @@ openapi: 3.0.0
 servers:
   - description: SwaggerHub API Auto Mocking
     url: https://virtserver.swaggerhub.com/The_Minefighter/VUBA/1.0.0
+  - url: http://localhost:8080/v1/
 info:
   description: This is a simple API
   version: "1.0.0"
@@ -92,6 +93,7 @@ components:
         Coordinates:
           $ref: '#/components/schemas/Coordinates'
     Coordinates:
+      type: object
       required:
         - Lat
         - Lon
@@ -104,4 +106,3 @@ components:
           type: number
           format: float
           example: 8.85
-      type: object

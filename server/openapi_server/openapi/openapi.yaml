@@ -10,6 +10,7 @@ info:
 servers:
 - description: SwaggerHub API Auto Mocking
   url: https://virtserver.swaggerhub.com/The_Minefighter/VUBA/1.0.0
+- url: http://localhost:8080/v1/
 tags:
 - description: Operations available to regular developers
   name: developers
