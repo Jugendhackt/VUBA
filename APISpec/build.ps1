@@ -1,0 +1,4 @@
+java -jar F:\Prg\openapi-generator-cli.jar generate -i spec.yml -o ..\server -l python-flask
+java -jar F:\Prg\openapi-generator-cli.jar generate -i spec.yml -o ..\client\ServerConnection -l javascript
+(Get-Content ..\Server\openapi_server\controllers\developers_controller.py.txt ).Replace('coordinates = .from_dict(connexion.request.get_json())','coordinates = from_dict(connexion.request.get_json())') | Out-File ..\Server\openapi_server\controllers\developers_controller.py.txt
+(Get-Content ..\Server\openapi_server\__main__.py ).Replace(' app.run(port=8080)'," app.run(port=8080,host='localhost')") | Out-File ..\Server\openapi_server\__main__.py
