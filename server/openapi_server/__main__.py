@@ -9,7 +9,7 @@ def main():
     app = connexion.App(__name__, specification_dir='./openapi/')
     app.app.json_encoder = encoder.JSONEncoder
     app.add_api('openapi.yaml', arguments={'title': 'VUBA API'})
-    app.run(port=8080,host='127.0.0.1')
+    app.run(port=8080,host='localhost')
 
 
 if __name__ == '__main__':

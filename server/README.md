@@ -21,13 +21,13 @@ python3 -m openapi_server
 and open your browser to here:
 
 ```
-http://localhost:8080/The_Minefighter/VUBA/1.0.0/ui/
+http://localhost:8080/v1/ui/
 ```
 
 Your OpenAPI definition lives here:
 
 ```
-http://localhost:8080/The_Minefighter/VUBA/1.0.0/openapi.json
+http://localhost:8080/v1/openapi.json
 ```
 
 To launch the integration tests, use tox:

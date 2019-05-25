@@ -1,9 +1,7 @@
 openapi: 3.0.0
 # Added by API Auto Mocking Plugin
 servers:
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/The_Minefighter/VUBA/1.0.0
-  - url: http://localhost:8080/v1/
+  - url: http://127.0.0.1/v1/
 info:
   description: This is a simple API
   version: "1.0.0"
