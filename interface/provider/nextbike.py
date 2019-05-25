@@ -43,4 +43,5 @@ class Nextbike(ProviderInterface):
                     b = Bike(place_lon, place_lat, provider, 0.0, additional_info="", bike_id=bike_id,
                              is_stationary=True, station_id=str(place["number"]))
                     bikes.append(b)
+        bikes = self.limit(bikes, lat, lon, limit)
         return bikes

@@ -31,4 +31,5 @@ class Mobike(ProviderInterface):
             station_id = "non"
 
             bikes.append(Bike(lon, lat, provider, 0, info, bike_id, stationary, station_id))
+        bikes = self.limit(bikes, lat, lon, limit)
         return bikes

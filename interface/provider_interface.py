@@ -1,5 +1,8 @@
 import json
 
+from interface.utils.coordinate_helper import haversine
+
+
 class Coordinates:
     lon: float
     lat: float
@@ -48,5 +51,15 @@ class Bike:
 class ProviderInterface:
     def get_bikes(self, lat: float, lon: float, limit: int) -> [Bike]:
         return []
+
+    @staticmethod
+    def limit(bikes: [Bike], lat: float, lon: float, limit: int) -> [Bike]:
+        for bike in bikes:
+            bike.distance = haversine(lon, lat, bike.coordinates.lon, bike.coordinates.lat)
+        bikes = sorted(bikes, key=lambda bike: bike.distance)[:limit]
+        return bikes
+
+
+
 
 
