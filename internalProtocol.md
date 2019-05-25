@@ -8,7 +8,7 @@
   - [] Bikes
     - Coordinates
       - Lat:float
-      - Long:float
+      - Lon:float
     - Provider: string
     - Accuracy: float (use 0.0 if unknown)
     - AdditionalInfo: string (Supports Markdown)
