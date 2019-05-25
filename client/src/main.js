@@ -1,6 +1,11 @@
 map = new OpenLayers.Map("mapdiv");
 map.addLayer(new OpenLayers.Layer.OSM());
 
+document.getElementById('setLocation').onclick = function(){
+    location.hash=document.getElementById('locationInput').value;
+    location.reload();
+};
+
 let setMarker = function(position){
     let lonLat = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude)
         .transform(
@@ -57,9 +62,25 @@ let setMarker = function(position){
 
     map.setCenter (lonLat, zoom);
 };
-
-navigator.geolocation.getCurrentPosition(setMarker);
-
 var zoom=16;
 var markers = new OpenLayers.Layer.Markers( "Markers" );
+
+let params = location.hash.substr(1);
+let coords = params.split(",");
+if(coords.length === 2){
+    let lat = parseFloat(coords[0]);
+    let lon = parseFloat(coords[1]);
+    if(!isNaN(lat) && !isNaN(lon)){
+        let pos = [];
+        pos.coords = [];
+        pos.coords.latitude = lat;
+        pos.coords.longitude = lon;
+        setMarker(pos);
+    }else{
+        navigator.geolocation.getCurrentPosition(setMarker);
+    }
+}else{
+    navigator.geolocation.getCurrentPosition(setMarker);
+}
+
 map.addLayer(markers);

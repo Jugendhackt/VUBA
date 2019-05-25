@@ -2,19 +2,23 @@
 <head>
     <title>VUBA</title>
     <style>
-        #marker {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #088;
-            border-radius: 10px;
-            background-color: #0FF;
-            opacity: 0.5;
+        .search{
+            position: absolute;
+            top: 15px;
+            z-index: 9999;
+            width: 400px;
+            left: 50%;
+            margin-left: -200px;
         }
     </style>
 </head>
 <body>
 <div id="mapdiv"></div>
-<div style="display: none;" id="overlays">
+<div class="search">
+    <label>
+        <input style="width:300px" id="locationInput" placeholder="Latitude,Longitude" type="text" />
+        <button style="width:70px" id="setLocation">Search</button>
+    </label>
 </div>
 
 <!-- scripts -->
