@@ -29,7 +29,7 @@ class Bike:
         super().__init__()
 
 
-class Interface:
+class ProviderInterface:
     def get_bikes(self, lat: float, lon: float) -> [Bike]:
         return []
 
