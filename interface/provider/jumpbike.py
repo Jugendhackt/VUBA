@@ -3,23 +3,31 @@ from interface.provider_interface import ProviderInterface, Bike
 import requests
 
 
-class JumpbikeUSA(ProviderInterface):
+class Jumpbike(ProviderInterface):
+
+    def __init__(self, city, lon: float, lat: float) -> None:
+        super().__init__()
+        self.city = city
+        self.lon = lon
+        self.lat = lat
 
     def get_bikes(self, lat: float, lon: float, limit: int) -> [Bike]:
-        r = requests.get(f"https://dc.jumpmobility.com/opendata/free_bike_status.json")
+        if haversine(self.lon, self.lat, lon, lat) > 50:
+            return []
+        r = requests.get(f"https://" + self.city + ".com/opendata/free_bike_status.json")
         data = r.json()
         bikes = []
         for bike in data["data"]["bikes"]:
             bike_id = bike["bike_id"]
-            info = bike["jump_ebike_battery_level"]
+            info = bike["jump_ebike_battery_level"] + ' Battery'
             lon = bike["lon"]
             lat = bike["lat"]
-            provider = "Jump"
+            provider = "jump"
             stationary = False
-            station_id = "non"
-
+            station_id = None
             bikes.append(Bike(lon, lat, provider, 0, info, bike_id, stationary, station_id))
         bikes = self.limit(bikes, lat, lon, limit)
+
         return bikes
 
 

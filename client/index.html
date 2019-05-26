@@ -1,20 +1,58 @@
 <html lang="en">
 <head>
     <title>VUBA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="lib/spinner.css">
     <style>
-        #marker {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #088;
-            border-radius: 10px;
-            background-color: #0FF;
-            opacity: 0.5;
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        @media only screen and (min-width: 501px) {
+            .search {
+                position: absolute;
+                top: 15px;
+                z-index: 9999;
+                width: 400px;
+                left: 50%;
+                margin-left: -200px;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .search {
+                position: absolute;
+                margin-left: 40px;
+                margin-right: 0;
+                top: 15px;
+                z-index: 9999;
+            }
+            #locationInput {
+                width: 60% !important;
+            }
+            #setLocation {
+                width: 35% !important;
+            }
+        }
+
+        input[type=text] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000000;
         }
     </style>
 </head>
 <body>
 <div id="mapdiv"></div>
-<div style="display: none;" id="overlays">
+<div id="search" class="search">
+    <label>
+        <input style="width:300px" id="locationInput" placeholder="Latitude,Longitude or search" type="text"/>
+        <button style="width:70px" id="setLocation">Search</button>
+    </label>
+</div>
+<div id="spinner" class="spinner">
+  <div class="cube1"></div>
+  <div class="cube2"></div>
 </div>
 
 <!-- scripts -->

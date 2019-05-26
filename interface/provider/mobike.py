@@ -23,13 +23,12 @@ class Mobike(ProviderInterface):
         bikes = []
         for bike in response.json()["bike"]:
             bike_id = bike["bikeIds"]
-            info = bike["distance"]
             lon = bike["distX"]
             lat = bike["distY"]
-            provider = "Mobike"
+            provider = "mobike"
             stationary = False
-            station_id = "non"
+            station_id = None
 
-            bikes.append(Bike(lon, lat, provider, 0, info, bike_id, stationary, station_id))
+            bikes.append(Bike(lon, lat, provider, 0, "", bike_id, stationary, station_id))
         bikes = self.limit(bikes, lat, lon, limit)
         return bikes

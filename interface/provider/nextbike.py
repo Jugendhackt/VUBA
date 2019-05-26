@@ -34,7 +34,7 @@ class Nextbike(ProviderInterface):
             if place["bike"]:
                 bike_id = place["bike_list"][0]["number"]
                 b = Bike(place_lon, place_lat, provider, 0.0, additional_info="", bike_id=bike_id,
-                         is_stationary=False, station_id="")
+                         is_stationary=False, station_id=None)
                 bikes.append(b)
             else:
                 bikes_on_station = place["bike_list"]
