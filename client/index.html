@@ -1,22 +1,39 @@
 <html lang="en">
 <head>
     <title>VUBA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        .search.desktop {
-            position: absolute;
-            top: 15px;
-            z-index: 9999;
-            width: 400px;
-            left: 50%;
-            margin-left: -200px;
+        body{
+            padding: 0;
+            margin: 0;
         }
-        .search.mobile {
-            position: absolute;
-            margin-left: 40px;
-            margin-right: 0;
-            top: 15px;
-            z-index: 9999;
+        @media only screen and (min-width: 501px) {
+            .search {
+                position: absolute;
+                top: 15px;
+                z-index: 9999;
+                width: 400px;
+                left: 50%;
+                margin-left: -200px;
+            }
         }
+
+        @media only screen and (max-width: 500px) {
+            .search {
+                position: absolute;
+                margin-left: 40px;
+                margin-right: 0;
+                top: 15px;
+                z-index: 9999;
+            }
+            #locationInput {
+                width: 60% !important;
+            }
+            #setLocation {
+                width: 35% !important;
+            }
+        }
+
         input[type=text] {
             background: transparent;
             border: none;
@@ -28,7 +45,7 @@
 <div id="mapdiv"></div>
 <div id="search" class="search">
     <label>
-        <input style="width:300px" id="locationInput" placeholder="Latitude,Longitude or search" type="text" />
+        <input style="width:300px" id="locationInput" placeholder="Latitude,Longitude or search" type="text"/>
         <button style="width:70px" id="setLocation">Search</button>
     </label>
 </div>
@@ -36,6 +53,5 @@
 <!-- scripts -->
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 <script src="lib/main.js"></script>
-<script src="lib/responsive.js"></script>
 </body>
 </html>
