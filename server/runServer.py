@@ -6,11 +6,16 @@ from PIL import Image
 from interface.provider.call_a_bike import CallABike
 from interface.provider.nextbike import Nextbike
 from server.image_util import serve_pil_image, replace_color, get_rgb_from_int
-from interface.provider.jumpbike_USA import JumpbikeUSA
+from interface.provider.jumpbike import Jumpbike
 from interface.provider.mobike import Mobike
 
 app = Flask(__name__)
-provider = [CallABike(), Nextbike(), JumpbikeUSA(), Mobike()]
+provider = [CallABike(),
+            Nextbike(),
+            Jumpbike("dc.jumpmobility", -76.962055, 38.919306),
+            Jumpbike("sf.jumpbikes", -122.440975, 37.75622166666667),
+            Jumpbike("pvd.jumpbikes", -71.42614666666667, 41.83241666666667),
+            Mobike()]
 
 
 @app.route('/getBikes', methods=['GET'])
@@ -32,8 +37,8 @@ def getBikes():
             bikes = []
             try:
                 bikes = service.get_bikes(lat, lon, limit)
-            except Exception:
-                pass
+            except Exception as e:
+                print(e)
             finally:
                 for bike in bikes:
                     bike_list += bike.__repr__() + ","
