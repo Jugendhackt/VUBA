@@ -10,14 +10,20 @@ document.getElementById('locationInput').addEventListener("keyup", function(even
     if(event.key === "Enter"){document.getElementById("setLocation").click()}
 });
 
-let setMarker = function (position) {
-    let lonLat = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude)
+let setMarker = function (lat, lon, isGPS) {
+    console.log(lat);
+    console.log(lon);
+    let lonLat = new OpenLayers.LonLat(lon, lat)
         .transform(
             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
             map.getProjectionObject() // to Spherical Mercator Projection
         );
-    let gpsIcon = new OpenLayers.Icon('/res/gpsIcon.png', new OpenLayers.Size(10, 10    ), new OpenLayers.Pixel(-6, -10));
-    markers.addMarker(new OpenLayers.Marker(lonLat, gpsIcon.clone()));
+    if(isGPS){
+        let gpsIcon = new OpenLayers.Icon('/res/gpsIcon.png', new OpenLayers.Size(10, 10    ), new OpenLayers.Pixel(-6, -10));
+        markers.addMarker(new OpenLayers.Marker(lonLat, gpsIcon.clone()));
+    }else{
+        markers.addMarker(new OpenLayers.Marker(lonLat));
+    }
 
     let xmlhttp = new XMLHttpRequest();
 
@@ -58,8 +64,8 @@ let setMarker = function (position) {
         }
     };
 
-    let req_url = "getBikes?lon=" + position.coords.longitude + "&lat="
-        + position.coords.latitude + "&limit=100";
+    let req_url = "getBikes?lon=" + lon + "&lat="
+        + lat + "&limit=100";
     xmlhttp.open("GET", req_url, true);
     xmlhttp.send();
 
@@ -75,28 +81,24 @@ if (params.includes(',')) {
         let lat = parseFloat(coords[0]);
         let lon = parseFloat(coords[1]);
         if (!isNaN(lat) && !isNaN(lon)) {
-            let pos = [];
-            pos.coords = [];
-            pos.coords.latitude = lat;
-            pos.coords.longitude = lon;
-            setMarker(pos);
+            setMarker(lat, lon, false);
         } else {
-            navigator.geolocation.getCurrentPosition(setMarker);
+            navigator.geolocation.getCurrentPosition(function(position){
+                setMarker(position.coords.latitude, position.coords.longitude, true)
+            });
         }
     } else {
-        navigator.geolocation.getCurrentPosition(setMarker);
+        navigator.geolocation.getCurrentPosition(function(position){
+            setMarker(position.coords.latitude, position.coords.longitude, true)
+        });
     }
 } else if (params !== "") {
     http = new XMLHttpRequest();
     http.onreadystatechange = function () {
         if (http.readyState === XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
             if (http.status === 200) {
-                var data = JSON.parse(http.responseText)[0]
-                var pos = [];
-                pos.coords = [];
-                pos.coords.latitude = parseFloat(data['lat']);
-                pos.coords.longitude = parseFloat(data['lon']);
-                setMarker(pos);
+                var data = JSON.parse(http.responseText)[0];
+                setMarker(parseFloat(data['lat']), parseFloat(data['lon']), false);
             }
         }
     };
@@ -104,7 +106,9 @@ if (params.includes(',')) {
     http.send();
 
 } else {
-    navigator.geolocation.getCurrentPosition(setMarker);
+    navigator.geolocation.getCurrentPosition(function(position){
+        setMarker(position.coords.latitude, position.coords.longitude, true)
+    });
 }
 
 map.addLayer(markers);
