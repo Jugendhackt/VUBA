@@ -58,8 +58,13 @@ def lib(file):
     return send_from_directory('../client/src', file)
 
 
+@app.route('/res/<string:file>', methods=["GET"])
+def res(file):
+    return send_from_directory('res', file)
+
+
 @app.route('/res/icon/<string:provider>', methods=['GET'])
-def res(provider):
+def createicon(provider):
     hash = hashlib.md5((provider+"a").encode("utf-8")).hexdigest()[:6]
     color = int(f"0x{hash}", 16)
     img_template = Image.open("res/marker_template.png")

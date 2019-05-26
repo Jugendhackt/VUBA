@@ -16,7 +16,8 @@ let setMarker = function (position) {
             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
             map.getProjectionObject() // to Spherical Mercator Projection
         );
-    markers.addMarker(new OpenLayers.Marker(lonLat));
+    let gpsIcon = new OpenLayers.Icon('/res/gpsIcon.png', new OpenLayers.Size(10, 10    ), new OpenLayers.Pixel(-6, -10));
+    markers.addMarker(new OpenLayers.Marker(lonLat, gpsIcon.clone()));
 
     let xmlhttp = new XMLHttpRequest();
 
