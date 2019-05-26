@@ -41,7 +41,7 @@ let setMarker = function (position) {
                             marker.lonlat,
                             new OpenLayers.Size(200, 200),
                             bikes[i].additionalInfo + "<br>" +
-                            (bikes[i].isStationary + "").replace('true', 'Das Fahrrad ist in einer Station.').replace('false', 'Das Fahrrad steht frei.') + "<br>" +
+                            (bikes[i].isStationary + "").replace('true', 'Das Fahrrad ist in einer Station.').replace('false', 'Das Fahrrad befindet sich nicht in einer Station.') + "<br>" +
                             "Angeboten von " + bikes[i].provider,
                             null, true);
                         map.addPopup(popup);
