@@ -6,6 +6,10 @@ document.getElementById('setLocation').onclick = function () {
     location.reload();
 };
 
+document.getElementById('locationInput').addEventListener("keyup", function(event){
+    if(event.key === "Enter"){document.getElementById("setLocation").click()}
+});
+
 let setMarker = function (position) {
     let lonLat = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude)
         .transform(

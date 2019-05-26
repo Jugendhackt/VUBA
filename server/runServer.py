@@ -29,10 +29,11 @@ def getBikes():
     if not (lat is None or lon is None or limit is None or limit < 1 or lat < -90 or lat > 90 or lon < -180 or lon > 180):
         bike_list = "["
         for service in provider:
+            bikes = []
             try:
                 bikes = service.get_bikes(lat, lon, limit)
             except Exception:
-                bikes = []
+                pass
             finally:
                 for bike in bikes:
                     bike_list += bike.__repr__() + ","
