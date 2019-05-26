@@ -71,7 +71,7 @@ def res(file):
 @app.route('/res/icon/<string:provider>', methods=['GET'])
 def createicon(provider):
     hash = hashlib.md5((provider+"a").encode("utf-8")).hexdigest()[:6]
-    color = int(f"0x{hash}", 16)
+    color = int("0x"+str(hash), 16)
     img_template = Image.open("res/marker_template.png")
     img = replace_color(img_template, (35, 32, 31), get_rgb_from_int(color))
     return serve_pil_image(img)

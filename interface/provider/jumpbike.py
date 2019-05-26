@@ -14,7 +14,7 @@ class Jumpbike(ProviderInterface):
     def get_bikes(self, lat: float, lon: float, limit: int) -> [Bike]:
         if haversine(self.lon, self.lat, lon, lat) > 50:
             return []
-        r = requests.get(f"https://" + self.city + ".com/opendata/free_bike_status.json")
+        r = requests.get("https://" + self.city + ".com/opendata/free_bike_status.json")
         data = r.json()
         bikes = []
         for bike in data["data"]["bikes"]:
