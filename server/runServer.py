@@ -1,5 +1,5 @@
 import hashlib
-from flask import Flask, request, send_from_directory, send_file
+from flask import Flask, request, send_from_directory, Response
 import json
 from PIL import Image
 
@@ -15,10 +15,18 @@ provider = [CallABike(), Nextbike(), JumpbikeUSA(), Mobike()]
 
 @app.route('/getBikes', methods=['GET'])
 def getBikes():
-    lat = float(request.args['lat'])
-    lon = float(request.args['lon'])
-    limit = int(request.args['limit'])
-    if not (lat is None or lon is None or limit is None):
+    response = Response()
+    response.headers['Content-Type'] = 'application/json'
+    try:
+        lat = float(request.args['lat'])
+        lon = float(request.args['lon'])
+        limit = int(request.args['limit'])
+    except ValueError:
+        response.response = json.dumps({"message": "Please provide real numbers!"})
+        response.status_code = 449
+        return response
+
+    if not (lat is None or lon is None or limit is None or limit < 1 or lat < -90 or lat > 90 or lon < -180 or lon > 180):
         bike_list = "["
         for service in provider:
             try:
@@ -30,8 +38,12 @@ def getBikes():
                     bike_list += bike.__repr__() + ","
         bike_list = bike_list[:-1]
         bike_list += "]"
-        return bike_list
-    return json.dumps({"message": "Not everything provided!"})
+        response.response = bike_list
+        return response
+    else:
+        response.response = json.dumps({"message": "Not everything or something wrong provided!"})
+        response.status_code = 449
+        return response
 
 
 # Static file serving
