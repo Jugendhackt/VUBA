@@ -24,3 +24,5 @@ Then there is an OAS3 specified interface for the clients.
  
 ##### Licenses
 [The Marker Icon](https://www.iconfinder.com/icons/383108/map_marker_icon) is licensed under "Free for commercial use".
+
+[Loading Animation](https://tobiasahlin.com/spinkit/) is licensed under the [MIT License](https://github.com/tobiasahlin/SpinKit/blob/master/LICENSE)

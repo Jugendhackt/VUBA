@@ -11,8 +11,6 @@ document.getElementById('locationInput').addEventListener("keyup", function(even
 });
 
 let setMarker = function (lat, lon, isGPS) {
-    console.log(lat);
-    console.log(lon);
     let lonLat = new OpenLayers.LonLat(lon, lat)
         .transform(
             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
@@ -54,6 +52,7 @@ let setMarker = function (lat, lon, isGPS) {
                     });
                     markers.addMarker(marker);
                 }
+                document.getElementById("spinner").remove();
             } else if (xmlhttp.status === 400) {
                 console.log('There was an error 400');
             } else {
