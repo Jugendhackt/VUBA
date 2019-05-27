@@ -14,7 +14,12 @@ Most of them provide an API.
 These APIs will be contacted by our server when needed.
 The server will (in the future) provide caching for these information.
 Then there is an OAS3 specified interface for the clients.
-
+## Install and run!
+After you have configured you have to have a look at some important things:
+ - The working directory should be /server directory.
+ - PYTHONPATH should be /.
+ - For HTTPS support (which is recommend due to browser security reasons with location access) you need to either host OpenLayers yourself (recommend) or
+ use the following mirror in the index.html https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js.
 ## Supported bike providers
  - nextbike
  - Call-a-bike

@@ -42,7 +42,8 @@ def getBikes():
             finally:
                 for bike in bikes:
                     bike_list += bike.__repr__() + ","
-        bike_list = bike_list[:-1]
+        if bike_list != "[":
+            bike_list = bike_list[:-1]
         bike_list += "]"
         response.response = bike_list
         return response
@@ -72,7 +73,7 @@ def res(file):
 def createicon(provider):
     hash = hashlib.md5((provider+"a").encode("utf-8")).hexdigest()[:6]
     color = int("0x"+str(hash), 16)
-    img_template = Image.open("res/marker_template.png")
+    img_template = Image.open("../server/res/marker_template.png")
     img = replace_color(img_template, (35, 32, 31), get_rgb_from_int(color))
     return serve_pil_image(img)
 
