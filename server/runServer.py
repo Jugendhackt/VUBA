@@ -77,4 +77,5 @@ def createicon(provider):
     return serve_pil_image(img)
 
 
-app.run(port=8080)
+if __name__ == '__main__':
+    app.run(port=8080)
