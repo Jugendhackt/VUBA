@@ -27,7 +27,7 @@ def getBikes():
         lon = float(request.args['lon'])
         limit = int(request.args['limit'])
     except ValueError:
-        response.response = json.dumps({"message": "Please provide real numbers!"})
+        response.data = json.dumps({"message": "Please provide real numbers!"})
         response.status_code = 449
         return response
 
@@ -45,10 +45,10 @@ def getBikes():
         if bike_list != "[":
             bike_list = bike_list[:-1]
         bike_list += "]"
-        response.response = bike_list
+        response.data = bike_list
         return response
     else:
-        response.response = json.dumps({"message": "Not everything or something wrong provided!"})
+        response.data = json.dumps({"message": "Not everything or something wrong provided!"})
         response.status_code = 449
         return response
 
