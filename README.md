@@ -20,12 +20,14 @@ After you have configured you have to have a look at some important things:
  - PYTHONPATH should be /.
  - For HTTPS support (which is recommend due to browser security reasons with location access) you need to either host OpenLayers yourself (recommend) or
  use the following mirror in the index.html https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js.
+ (Please note that OpenLayers will not fully use HTTPS as long as you are not manually chaning all "http://" to "https://" in OpenLayers.js)
 ## Supported bike providers
  - nextbike
  - Call-a-bike
  - Mobike
  - Jump (USA only)
- 
+## Known issues
+ - Mobike seems to have a rate limit which leads to mobike sometimes not showing any bikes
  
 ##### Licenses
 [The Marker Icon](https://www.iconfinder.com/icons/383108/map_marker_icon) is licensed under "Free for commercial use".
