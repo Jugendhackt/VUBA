@@ -29,6 +29,8 @@ provider = [CallABike(),
             Jumpbike("sac.jumpbikes", -121.48072166666667, 38.55402),
             Jumpbike("san.jumpbikes", -117.133975, 32.7024),
             Jumpbike("sea.jumpbikes", -122.348495, 47.61465666666667),
+            Jumpbike("tpa.jumpbikes", -82.346498, 27.945353),
+            Jumpbike("dcs.jumpmobility", -77.043485, 38.908741),
             Mobike()]
 
 
