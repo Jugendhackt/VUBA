@@ -12,9 +12,23 @@ from interface.provider.mobike import Mobike
 app = Flask(__name__)
 provider = [CallABike(),
             Nextbike(),
-            Jumpbike("dc.jumpmobility", -76.962055, 38.919306),
-            Jumpbike("sf.jumpbikes", -122.440975, 37.75622166666667),
-            Jumpbike("pvd.jumpbikes", -71.42614666666667, 41.83241666666667),
+            Jumpbike("atl.jumpbikes", -84.349255, 33.79799666666667),
+            Jumpbike("atx.jumpbikes", -97.74560666666666, 30.250985),
+            Jumpbike("bt.jumpbikes", -76.678591, 39.259353),
+            Jumpbike("bts.jumpbikes", -76.678591, 39.259353),
+            Jumpbike("bxl.jumpbikes", 4.438058333333333, 50.84443666666667),
+            Jumpbike("dc.jumpbikes", -77.06582, 38.894286),
+            Jumpbike("den.jumpbikes", -105.00064166666667, 39.77574),
+            Jumpbike("la.jumpbikes", -118.48565666666667, 34.045186666666666),
+            Jumpbike("lou.jumpbikes", -83.12633333333333, 42.549166666666665),
+            Jumpbike("mia.jumpbikes", -80.186885, 25.783151),
+            Jumpbike("nyc.jumpbikes", -74.08365333333333, 40.64044),
+            Jumpbike("pvd.jumpbikes", -71.39172, 41.82959666666667),
+            Jumpbike("sc.jumpbikes", -122.022995, 36.98526),
+            Jumpbike("sf.jumpbikes", -122.390595, 37.74791166666667),
+            Jumpbike("sac.jumpbikes", -121.48072166666667, 38.55402),
+            Jumpbike("san.jumpbikes", -117.133975, 32.7024),
+            Jumpbike("sea.jumpbikes", -122.348495, 47.61465666666667),
             Mobike()]
 
 
