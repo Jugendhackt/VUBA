@@ -3,6 +3,8 @@
 ##### Vereinigte Übersicht aller Bikesharing Anbieter
 #### Find the nearest bike.
 ## What is VUBA?
+[Recording of presentation (in german)](https://media.ccc.de/v/jh19-cgn-vueba)
+
 VUBA is a webapp to find the nearest bike from many bike sharing apps.
 ## Why?
 Sometimes you need to find the nearest bike.
@@ -28,8 +30,9 @@ After you have configured you have to have a look at some important things:
  - Jump (USA only)
 ## Known issues
  - Mobike seems to have a rate limit which leads to mobike sometimes not showing any bikes
- 
-##### Licenses
+## You do not want your Bike Sharing App listed in VUBA?
+Please contact us via the email listed in our profiles.
+## Licenses
 [The Marker Icon](https://www.iconfinder.com/icons/383108/map_marker_icon) is licensed under "Free for commercial use".
 
 [Loading Animation](https://tobiasahlin.com/spinkit/) is licensed under the [MIT License](https://github.com/tobiasahlin/SpinKit/blob/master/LICENSE)
