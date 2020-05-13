@@ -19,7 +19,7 @@ class CallABike(ProviderInterface):
                 }
             ]
         }
-        response = requests.post('https://www.callabike-interaktiv.de/de/rpc', data=json.dumps(request_data))
+        response = requests.post('https://www.callabike.de/de/rpc', data=json.dumps(request_data))
         bikes = []
         data = response.json()
         for location in data['result']['data']['Locations']:
